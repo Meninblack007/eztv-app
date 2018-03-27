@@ -72,7 +72,9 @@ export default class EZTV extends Component {
                                 </TouchableOpacity>
                             </View>
                             <TouchableOpacity onPress={() => this.setState({ visibleModal: false })}>
-                                <View> <Text style={styles.modalClose}>Close</Text> </View>
+                                <View>
+                                    <Text style={styles.modalClose}>Close</Text>
+                                </View>
                             </TouchableOpacity>
                         </View>
                     </Modal>
