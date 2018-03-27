@@ -81,7 +81,7 @@ export default class EZTV extends Component {
                 )}
                 {renderIf(this.state.isLoading,
                     <View style={styles.roundRect}>
-                        <ImageBackground source={{ uri: "placeholder" }} imageStyle={{ borderRadius: 10 }} style={styles.screenshot} />
+                        <ImageBackground source={images.placeholder} imageStyle={{ borderRadius: 10 }} style={styles.screenshot} />
                         <View style={styles.titleBox}>
                             <Text style={styles.title}>Loading...</Text>
                         </View>
@@ -97,7 +97,7 @@ export default class EZTV extends Component {
                                     this.changeState(item);
                                 }}>
                                 <View style={styles.roundRect}>
-                                    <ImageBackground source={{ uri: getImage(item.large_screenshot) }} imageStyle={{ borderRadius: 10 }} style={styles.screenshot}>
+                                    <ImageBackground source={getImage(item.large_screenshot)} imageStyle={{ borderRadius: 10 }} style={styles.screenshot}>
                                         <View style={styles.titleBox}>
                                             <Text style={styles.title} numberOfLines={1}>{item.title}</Text>
                                             <Text style={styles.date}> {convertUnixTimestampToDate(item.date_released_unix)} </Text>
@@ -135,9 +135,11 @@ function renderIf(condition, trueCondition, falseCondition) {
 
 function getImage(img) {
     if (img === "") {
-        return "placeholder";
+        return images.placeholder;
     } else {
-        return "http:" + img;
+        return {
+            uri: "http:" + img
+        };
     }
 };
 
